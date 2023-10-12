@@ -2,24 +2,22 @@
 """ Base model script """
 
 import uuid
-from datetime import datetime
+import datetime
 
-class Basemodel:
+class BaseModel:
 
     """ Class from which other classes inherit """
 
-    def __init__(self):
-
-        """ Initialize instance attributes
-
-        Args:
-            - * args: list of arguments
-            - **kwargs: dict of key-value arguments
-        """
-
-        self.id = str(uuid.uuid4())
-        self.created_at = datetime.now()
-        self.updated_at = datetime.now()
+    def __init__(self, *args, **kwargs):
+        """ initialize class object """
+        if len(args) > 0:
+            for k in args[0]:
+                setattr(self, k, args[0][k])
+        else:
+            self.created_at = datetime.datetime.now()
+            self.id = str(uuid.uuid4())
+        for k in kwargs:
+            print("kwargs: {}: {}".format(k, kwargs[k]))
 
     def save(self):
         """ Update public instance property updated_at """
@@ -38,4 +36,5 @@ class Basemodel:
     def __str__(self):
         """ Return official string representation """
 
-        return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
+        return "[{}] ({}) {}".\
+        format(type(self).__name__, self.id, self.__dict__)
