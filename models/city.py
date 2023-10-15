@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-from base_model import BaseModel
+from models import *
 
 class City(BaseModel):
     """Simple model to represent the city in a state"""

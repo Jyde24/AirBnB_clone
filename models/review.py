@@ -1,6 +1,5 @@
 #!/usr/bin/python3
-
-from base_model import BaseModel
+from models import *
 
 class Review(BaseModel):
     """A simple model to represent user reviews"""

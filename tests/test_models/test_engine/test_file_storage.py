@@ -1,8 +1,11 @@
 #!/usr/bin/python3
 """ Unittests for FileStorage class """
 
+import unittest
+import models
 
-from modules.engine.file_storage import FileStorage
+
+from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
 
 class TestFileStorage_instantiation(unittest.TestCase):
